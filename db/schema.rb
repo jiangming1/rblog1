@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711054428) do
+ActiveRecord::Schema.define(version: 20150711143003) do
 
   create_table "azufangs", force: :cascade do |t|
     t.string   "username"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20150711054428) do
     t.string   "title"
     t.text     "body"
     t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "centers", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -162,9 +168,28 @@ ActiveRecord::Schema.define(version: 20150711054428) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "smsreceiveds", force: :cascade do |t|
+    t.string   "no"
+    t.string   "body"
+    t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "smstaglists", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
+    t.string   "laiyuan"
+    t.boolean  "isonline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "smstags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "mobid"
+    t.string   "mobno"
     t.string   "laiyuan"
     t.boolean  "isonline"
     t.datetime "created_at", null: false
@@ -189,6 +214,13 @@ ActiveRecord::Schema.define(version: 20150711054428) do
     t.string   "mob"
     t.string   "loginname"
     t.string   "zhifubao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "smsuserusedtellists", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "telpostion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

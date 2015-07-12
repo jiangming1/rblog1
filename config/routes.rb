@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :smsreceiveds
+  resources :smstags
+  resources :smsuserusedtellists
+  resources :smsuserusedtellists
+  resources :centers
   resources :smsusers
   resources :smslogrecords
-  resources :smstaglists
   resources :smschongzhirecords
   resources :smsnos
   resources :wxzhuanzhangs

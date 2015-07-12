@@ -127,6 +127,11 @@ zh-CN:
         chongzhibi: "充值艾玛币"
         dingdanhao: "订单号"
         chongzhijine: "充值金额"
+      smstaglist:
+        name: "项目名称"
+        price: "单价"
+        laiyuan: "来源"
+        isonline: "状态"
       smsuser:
         usertype: "用户类型"
         mail: '邮件'
