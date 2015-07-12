@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711143003) do
+ActiveRecord::Schema.define(version: 20150712084234) do
 
   create_table "azufangs", force: :cascade do |t|
     t.string   "username"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150711143003) do
     t.string   "dingdanhao"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   create_table "smslogrecords", force: :cascade do |t|
@@ -147,6 +148,7 @@ ActiveRecord::Schema.define(version: 20150711143003) do
     t.date     "huoqushijian"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   create_table "smsnos", force: :cascade do |t|
@@ -155,6 +157,7 @@ ActiveRecord::Schema.define(version: 20150711143003) do
     t.string   "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "uuid"
   end
 
   create_table "smspeople", force: :cascade do |t|
@@ -174,6 +177,8 @@ ActiveRecord::Schema.define(version: 20150711143003) do
     t.string   "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "uuid"
+    t.string   "mytelno"
   end
 
   create_table "smstaglists", force: :cascade do |t|
@@ -252,6 +257,8 @@ ActiveRecord::Schema.define(version: 20150711143003) do
     t.string   "passwd58"
     t.string   "money"
     t.string   "authentication_token"
+    t.integer  "qian"
+    t.integer  "rmb"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true

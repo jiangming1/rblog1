@@ -1,5 +1,8 @@
 <%- model_class = Center -%>
 <div class="page-header">
+  <%
+  %>
+<%=current_user.qian %>
   <h1>获取验证码</h1>
 </div>
 <table class="table table-striped">
@@ -27,11 +30,15 @@ $(document).ready(function(){
   $("#bgettel").click(function(){
     smstagid=$("#name_id").val();
     htmlobj=$.ajax({url:"/smstags/"+smstagid+".json",async:false});
-      jsonResp=eval("("+htmlobj.responseText+")");
+    jsonResp=eval("("+htmlobj.responseText+")");
+    if (!jsonResp.mobno==""){
       $("#itel").val(jsonResp.mobno);
       // timer1=window.setInterval(f,8000);
       window.setTimeout(f,8000);
       g1=1;
+      }else{
+    $("#itel").val("余额为0请充值");
+    }
           });
       });
 function f(){
@@ -46,4 +53,4 @@ function f(){
       }
   $("#dcode").html("第"+g1+"次获取验证码");
 }    
-</script>uu
+</script>

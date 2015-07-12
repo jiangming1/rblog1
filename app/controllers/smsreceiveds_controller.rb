@@ -5,7 +5,7 @@ class SmsreceivedsController < ApplicationController
   # GET /smsreceiveds.json
   def index
 
-    @smsreceiveds = Smsreceived.all
+    @smsreceiveds = Smsreceived.all.order("id")
 
   end
 
@@ -18,14 +18,18 @@ if !@smsreceived1.nil? then
   @smstag=Smstag.where("id = ?",params[:nameid]).first
   @smsno=Smsno.where("no = ?",params[:t]).first
   @smsno1=Smsno.where("id > "+@smsno.id.to_s).first
+  #复制之后删除自己 下次就不会读到了  
   @smsreceived=@smsreceived1
   @smslog=Smslogrecord.new
+  @smsreceived1.delete
   @smslog.jieshouhaoma=@smsreceived.no
   @smslog.neirong=@smsreceived.body
   @smslog.xiangmu=params[:t]
   @smslog.huoqushijian=@smsreceived.created_at
+  @smslog.user_id=current_user.id
   @smslog.save
-
+  current_user.qian=current_user.qian-10
+  current_user.save
 if !@smsno1.nil? then
   #找到后更新tag下的手机号
   @smstag.mobid=@smsno1.id
@@ -93,6 +97,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def smsreceived_params
-      params.require(:smsreceived).permit(:no, :body, :tag)
+      params.require(:smsreceived).permit(:no, :body, :tag, :uuid, :mytelno)
     end
 end

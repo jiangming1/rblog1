@@ -4,7 +4,7 @@ class SmslogrecordsController < ApplicationController
   # GET /smslogrecords
   # GET /smslogrecords.json
   def index
-    @smslogrecords = Smslogrecord.all
+    @smslogrecords = Smslogrecord.where("user_id=?",current_user.id).order("id desc")
   end
 
   # GET /smslogrecords/1

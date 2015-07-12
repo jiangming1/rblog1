@@ -14,6 +14,9 @@ if @smstag.mobid.nil? then
   @smstag.mobid=1
   @smstag.save
 end
+  if current_user.qian<10 then 
+  @smstag.mobno=""
+  end
   end
 
   def getnew
