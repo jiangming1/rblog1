@@ -19,7 +19,9 @@ if !@smsreceived1.nil? then
   @smsno=Smsno.where("no = ?",params[:t]).first
   @smsno1=Smsno.where("id > "+@smsno.id.to_s).first
   #复制之后删除自己 下次就不会读到了  
-  @smsreceived=@smsreceived1
+  @smsreceived=Smsreceived.new
+  @smsreceived.no=@smsreceived1.no
+  @smsreceived.body=@smsreceived1.body
   @smslog=Smslogrecord.new
   @smsreceived1.delete
   @smslog.jieshouhaoma=@smsreceived.no
